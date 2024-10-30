@@ -1,4 +1,4 @@
-import { Tabs, Tab, Card, CardBody, Button } from "@nextui-org/react";
+import { Tabs, Tab, Card, CardBody, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Image } from "@nextui-org/react";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 
 const HomeTab = () => {
@@ -22,6 +22,8 @@ const HomeTab = () => {
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
   ];
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  
   return(
     <>
       <Card className="h-[90vh]">
@@ -97,6 +99,37 @@ const HomeTab = () => {
                 </Button>
               </div>
             </div>
+            <Button onPress={onOpen}>Open Modal</Button>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} isKeyboardDismissDisabled={true} backdrop={"blur"} >
+              <ModalContent>
+                {(onClose) => (
+                  <>
+                    <ModalHeader className="opacity-0">h</ModalHeader>
+                    <ModalBody>
+                      <Image
+                        width={800}
+                        alt="NextUI hero Image"
+                        src="https://nextui.org/images/hero-card-complete.jpeg"
+                      />
+                      <div>
+                      <h1 className="font-bold">
+                        Welcome to Works Beta 1
+                      </h1>
+                        <p>A home for you and a home for everyone where creativity begins from.</p>
+                      </div>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="danger" variant="light" onPress={onClose}>
+                        Close
+                      </Button>
+                      <Button color="primary" onPress={onClose}>
+                        Action
+                      </Button>
+                    </ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
           </main>
         </CardBody>
       </Card>

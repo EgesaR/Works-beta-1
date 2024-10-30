@@ -8,9 +8,10 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen flex flex-row">
-      <div className="h-full w-full text-black dark:text-white bg-gradient-to-r from-orange-50 via-brown-50 to-indigo-50 dark:bg-gradient-to-tl dark:from-[#753c73] dark:to-[#0CBABA] px-2">
+      <div className="h-full w-full text-black dark:text-white to-indigo-50 dark:bg-gradient-to-tl dark:from-[#753c73] dark:to-[#0CBABA] px-2">
         <NavBar />
         <TabList />
+        
       </div>
     </div>
   );

@@ -37,10 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-black dark:text-white bg-white dark:bg-black transition-all ease-in-out duration-150`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-black dark:text-white bg-gradient-to-r from-orange-50 via-brown-50  dark:bg-black transition-all ease-in-out duration-150`}
       >
         <NextUIProvider>
-          <NextThemesProvider attribute="class" defaultTheme="dark">
+          <NextThemesProvider attribute="class" defaultTheme="light">
             {children}
           </NextThemesProvider>
         </NextUIProvider>
