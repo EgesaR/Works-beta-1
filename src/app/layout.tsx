@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-black bg-white dark:bg-[#121212] dark:text-white transition-all ease-in-out duration-150`}
       >
         <NextUIProvider>
-          <NextThemesProvider attribute="class" defaultTheme="dark">
+          <NextThemesProvider attribute="class" defaultTheme="light">
             {children}
           </NextThemesProvider>
         </NextUIProvider>

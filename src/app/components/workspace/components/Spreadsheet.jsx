@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useCallback } from "react";
 import styles from "./styles/styles.module.css";
 import { generateExcelColumnsAndNumbers } from "@/utils/generateColumns";
@@ -24,7 +22,9 @@ const Spreadsheet = ({ rows = 10, cols = 10 }) => {
     (label) => {
       const col = columns.indexOf(label.charAt(0));
       const row = parseInt(label.slice(1), 10) - 1;
-      return data[row] && data[row][col] ? parseFloat(data[row][col].computed) || 0 : 0;
+      return data[row] && data[row][col]
+        ? parseFloat(data[row][col].computed) || 0
+        : 0;
     },
     [data, columns]
   );
@@ -56,7 +56,9 @@ const Spreadsheet = ({ rows = 10, cols = 10 }) => {
         }
 
         // If no specific function, evaluate as a regular expression with cell references
-        const parsedExpression = expression.replace(/[A-Z][0-9]+/g, (match) => getCellValue(match));
+        const parsedExpression = expression.replace(/[A-Z][0-9]+/g, (match) =>
+          getCellValue(match)
+        );
         try {
           return eval(parsedExpression);
         } catch {
@@ -118,7 +120,7 @@ const Spreadsheet = ({ rows = 10, cols = 10 }) => {
   };
 
   return (
-    <div className={styles.spreadsheet}>
+    <div className={`${styles.spreadsheet} py-[10px]`}>
       <div className={`text-gray-600 text-sm ${styles.headerRow}`}>
         <div className={styles.emptyCell}></div>
         {columns.slice(0, cols).map((col, index) => (
@@ -156,9 +158,7 @@ const Spreadsheet = ({ rows = 10, cols = 10 }) => {
                   : cell.value
               }
               placeholder={cell.computed ? cell.computed.toString() : ""}
-              onChange={(e) =>
-                handleChange(rowIndex, colIndex, e.target.value)
-              }
+              onChange={(e) => handleChange(rowIndex, colIndex, e.target.value)}
               onKeyDown={(e) => handleKeyDown(rowIndex, colIndex, e)}
               onFocus={() => handleFocus(rowIndex, colIndex)}
               onBlur={handleBlur}
